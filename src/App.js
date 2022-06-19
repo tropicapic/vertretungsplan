@@ -6,19 +6,19 @@ const serverHostURL = "http://192.168.178.35:4001";
 function App() {
   const [connected, setConnected] = useState(false);
 
-  useEffect(() => {
-    const socket = io.connect(serverHostURL);
-    socket.on('connect', () => {
-      console.log("Connected with server", socket.connected);
-      setConnected(socket.connected);
-    })
-    socket.on("disconnect", () => {
-      console.log("Connected with server", socket.connected);
-      setConnected(socket.connected);
-    })
-  }, []);
+  // useEffect(() => {
+  //   const socket = io.connect(serverHostURL);
+  //   socket.on('connect', () => {
+  //     console.log("Connected with server", socket.connected);
+  //     setConnected(socket.connected);
+  //   })
+  //   socket.on("disconnect", () => {
+  //     console.log("Connected with server", socket.connected);
+  //     setConnected(socket.connected);
+  //   })
+  // }, []);
 
-  return (connected && <Vertretung />);
+  return (<Vertretung />);
 }
 
 export default App;

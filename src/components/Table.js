@@ -19,7 +19,6 @@ const Table = ({ today }) => {
             }
         }
         setCurrentData(newData);
-        console.log(newData);
     }
     function updateRows() {
         getRowsFromIndex(calcRowAmount());
@@ -30,11 +29,16 @@ const Table = ({ today }) => {
         }
     }
     useEffect(() => {
-        const timer = setInterval(() => {
-            updateRows();
-        }, 1000);
-        // clearing interval
-        return () => clearInterval(timer);
+        if (today.length > calcRowAmount()) {
+            const timer = setInterval(() => {
+                updateRows();
+            }, 1000);
+            // clearing interval
+            return () => clearInterval(timer);
+        } else {
+            setCurrentData(today);
+        }
+
     });
     return (
         <StyledTable className="styled-table">
@@ -56,7 +60,7 @@ const Table = ({ today }) => {
                             <td>{element.std}</td>
                             <td>{element.abw}</td>
                             <td>{element.ver}</td>
-                            <td>{element.klasse}</td>
+                            <td>{element.raum}</td>
                             <td className="info">{element.info}</td>
                         </tr>
                     )}
