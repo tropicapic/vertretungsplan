@@ -1,0 +1,33 @@
+@font-face {
+    font-family: Osake;
+    src: url("/osake-x3oqj.otf") format("opentype");
+}
+@font-face {
+    font-family: Roboto;
+    src: url("Roboto-Medium.ttf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: Roboto;
+    src: url("Roboto-Black.ttf") format("opentype");
+    font-weight: 900;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+h1{
+    font-family: "Osake", serif;
+}
+
+:root {
+    --wasabi: #84af75;
+    --dark-fg: #111827;
+    --dark-bg: #1f2937;
+    --nav-height: 4rem;
+}
