@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Table = ({ today }) => {
-    console.log(today)
+    const [index, setIndex] = useState(0);
+    const [currentData, setCurrentData] = useState([]);
+    function calcRowAmount() {
+        const innerTableHeight = window.innerHeight - (72 * 2) - (64 + 56 + 43);
+        return Math.floor(innerTableHeight / 43);
+    }
+    function getRowsFromIndex(amount) {
+        const length = today.length;
+        const newData = [];
+        for (let i = index; i < (index + amount); i++) {
+            if (i >= length) {
+                newData.push(today[i - length])
+            } else {
+                newData.push(today[i]);
+            }
+        }
+        setCurrentData(newData);
+        console.log(newData);
+    }
+    function updateRows() {
+        getRowsFromIndex(calcRowAmount());
+        if (index >= today.length) {
+            setIndex(0);
+        } else {
+            setIndex(index + 1);
+        }
+    }
+    useEffect(() => {
+        const timer = setInterval(() => {
+            updateRows();
+        }, 1000);
+        // clearing interval
+        return () => clearInterval(timer);
+    });
     return (
         <StyledTable className="styled-table">
             <table>
@@ -17,14 +50,14 @@ const Table = ({ today }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {today.map(element =>
-                        <tr>
+                    {currentData.map((element, id) =>
+                        <tr key={id}>
                             <td>{element.klasse}</td>
                             <td>{element.std}</td>
                             <td>{element.abw}</td>
                             <td>{element.ver}</td>
                             <td>{element.klasse}</td>
-                            <td>Fach:E</td>
+                            <td className="info">{element.info}</td>
                         </tr>
                     )}
                 </tbody>
@@ -35,6 +68,7 @@ const Table = ({ today }) => {
 
 const StyledTable = styled.div`
     width: 100%;
+    max-height: calc(100vh - (72px * 2) - (64px + 56px));
     border: 2px var(--wasabi) solid;
     border-radius: 8px;
     color: white;
@@ -64,6 +98,9 @@ const StyledTable = styled.div`
         }
         td{
             font-weight: 500;
+        }
+        td.info{
+            max-width: 100px;
         }
     }
 `

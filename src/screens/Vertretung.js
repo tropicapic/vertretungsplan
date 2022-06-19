@@ -47,7 +47,6 @@ const StyledVertretung = styled.div`
             height: 100%;
         }
     }
-    
 `
 
 export default Vertretung;
