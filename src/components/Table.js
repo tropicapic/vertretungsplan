@@ -5,7 +5,7 @@ const Table = ({ today }) => {
     const [index, setIndex] = useState(0);
     const [currentData, setCurrentData] = useState([]);
     function calcRowAmount() {
-        const innerTableHeight = window.innerHeight - (72 * 2) - (64 + 56 + 43);
+        const innerTableHeight = window.innerHeight - (72 * 2) - (64 + 56 + 43) + 1;
         return Math.floor(innerTableHeight / 43);
     }
     function getRowsFromIndex(amount) {
