@@ -41,7 +41,7 @@ function Vertretung() {
                     <Table today={today} />
                 </div>
                 <div className="tomorrow">
-                    <Table today={today} />
+                    <Table today={tomorrow} />
                 </div>
                 <div className="information">
                     <div className="header">
