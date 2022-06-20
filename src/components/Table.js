@@ -28,6 +28,13 @@ const Table = ({ today }) => {
             setIndex(index + 1);
         }
     }
+    function getTableStyle() {
+        if (today.length > calcRowAmount()) {
+            return { height: "calc(100vh - (72px * 2) - (64px + 56px))" }
+        } else {
+            return { height: "fit-content" }
+        }
+    }
     useEffect(() => {
         if (today.length > calcRowAmount()) {
             const timer = setInterval(() => {
@@ -41,7 +48,7 @@ const Table = ({ today }) => {
 
     });
     return (
-        <StyledTable className="styled-table">
+        <StyledTable className="styled-table" style={getTableStyle()}>
             <table>
                 <thead>
                     <tr>
