@@ -9,17 +9,17 @@ function Vertretung() {
     const [information, setInformation] = useState([]);
 
     const getToday = async () => {
-        const res = await fetch("https://raw.githubusercontent.com/riedadr/karo/master/data/heute.json");
+        const res = await fetch("https://ka-ro-final.vercel.app/data/heute.json");
         const answer = await res.json();
         setToday(answer);
     };
     const getTomorrow = async () => {
-        const res = await fetch("https://raw.githubusercontent.com/riedadr/karo/master/data/morgen.json");
+        const res = await fetch("https://ka-ro-final.vercel.app/data/morgen.json");
         const answer = await res.json();
         setTomorrow(answer);
     };
     const getInformation = async () => {
-        const res = await fetch("https://raw.githubusercontent.com/riedadr/karo/master/data/nachrichten.json");
+        const res = await fetch("https://ka-ro-final.vercel.app/data/nachrichten.json");
         const answer = await res.json();
         setInformation(answer);
     };
